@@ -4,6 +4,9 @@ function SomeComponent() {
   return (
     <div>
       <p />
+      <p />
+      <p />
+      <h1 />
     </div>
   )
 }
