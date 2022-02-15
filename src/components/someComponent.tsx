@@ -6,7 +6,7 @@ function SomeComponent() {
       <p />
       <p />
       <p />
-      <h1 />
+      <h4 />
       <h1 />
       <h1 />
       <h1 />
