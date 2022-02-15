@@ -1,7 +1,11 @@
 import React from 'react'
 
 function SomeComponent() {
-  return <div />
+  return (
+    <div>
+      <p />
+    </div>
+  )
 }
 
 export default SomeComponent
