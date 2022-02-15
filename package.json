@@ -4,14 +4,35 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android-release": "react-native run-android --variant=release",
+    "android-staging": "react-native run-android --variant=stagingrelease --appIdSuffix=staging",
+    "ios": "react-native run-ios ",
+    "ios:ip13p": "react-native run-ios --simulator=\"iPhone 13 Pro\"",
+    "ios:ip13": "react-native run-ios --simulator=\"iPhone 13\"",
+    "ios:ip12": "react-native run-ios --simulator=\"iPhone 12\"",
+    "ios:ip11": "react-native run-ios --simulator=\"iPhone 11\"",
+    "ios:ip8": "react-native run-ios --simulator=\"iPhone 8\"",
+    "ios:ip6": "react-native run-ios --simulator=\"iPhone 6s\"",
+    "ios-release": "react-native run-ios --scheme=\"picodi.production\"",
+    "ios-staging": "react-native run-ios --scheme=\"picodi.staging\"",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "test": "jest --passWithNoTests",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "type-check": "tsc --noEmit --skipLibCheck",
+    "format:check": "prettier \"src/**/*.{js,jsx,json,ts,tsx,css,scss}\" -c",
+    "format": "prettier --write \"src/**/*.{js,jsx,json,ts,tsx,css,scss}\" ",
+    "full": "yarn lint && yarn type-check && yarn test && yarn format:check",
+    "full:fix": "yarn lint:fix && yarn format",
+    "android:clean": "cd android && ./gradlew clean && cd ..",
+    "ios:install": "cd ios && pod install && cd .. ",
+    "cacheCleanup": "watchman watch-del-all && rm -rf node_modules && yarn cache clean && yarn install && yarn start --reset-cache"
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.67.2"
+    "react-hook-form": "^7.27.0",
+    "react-native": "0.67.2",
+    "zod": "^3.11.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -22,6 +43,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
+    "@twgdev/prettier-config": "^1.0.3",
     "babel-jest": "^26.6.3",
     "eslint": "^7.14.0",
     "jest": "^26.6.3",
@@ -32,6 +54,7 @@
   "resolutions": {
     "@types/react": "^17"
   },
+  "prettier": "@twgdev/prettier-config",
   "jest": {
     "preset": "react-native",
     "moduleFileExtensions": [
